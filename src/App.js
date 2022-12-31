@@ -41,6 +41,26 @@ const App = () => {
               Navbar
             </div>
           </div>
+          <div>
+            <Routes>
+              <Route path="/" element="Ecommerce" />
+              <Route path="/ecommerce" element="Ecommerce" />
+              <Route path="/orders" element="Orders" />
+              <Route path="/employees" element="Employees" />
+              <Route path="/customers" element="Customers" />
+              <Route path="/kanban" element="Kanban" />
+              <Route path="/editor" element="Editor" />
+              <Route path="/calendar" element="Calendar" />
+              <Route path="/color-picker" element="ColorPicker" />
+              <Route path="/line" element="Line" />
+              <Route path="/area" element="Area" />
+              <Route path="/pie" element="Pie" />
+              <Route path="/financial" element="Financial" />
+              <Route path="/pyramid" element="Pyramid" />
+              <Route path="/color-mapping" element="ColorMapping" />
+              <Route path="/stacked" element="Stacked" />
+            </Routes>
+          </div>
         </div>
       </BrowserRouter>
     </div>
