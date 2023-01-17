@@ -11,7 +11,7 @@ import { Cart, Chat, Notification, UserProfile } from ".";
 import { useStateContext } from "../contexts/AppContext";
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
-  <TooltipComponent content={"title"} position="BottomCenter">
+  <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
       onClick={customFunc}
@@ -21,16 +21,39 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
       <span
         style={{ background: dotColor }}
         className="absolute inline-flex rounded-full w-2 h-2 right-2 top-2"
-      >
+      />
         {icon}
-      </span>
+      
     </button>
   </TooltipComponent>
 );
 const Navbar = () => {
-  const { activeMenu, setActiveMenu, isClicked, setIsClicked,handleClick } =
-    useStateContext();
+  const {
+    activeMenu,
+    setActiveMenu,
+    isClicked,
+    setIsClicked,
+    handleClick,
+    screenSize,
+    setScreenSize,
+  } = useStateContext();
 
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return ()=> window.removeEventListener('resize', handleResize)
+  }, []);
+
+
+  useEffect(() => {
+if(screenSize <=900){
+  setActiveMenu(false)
+}else{
+  setActiveMenu(true)
+}
+  }, [screenSize]);
   return (
     <div className="flex justify-between md:mx-6 relative">
       <NavButton
